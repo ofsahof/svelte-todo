@@ -4,16 +4,25 @@
 
   import type { TODO } from "../types";
   export let todos: TODO[];
-  let text = '';
+  let text = "";
 
   function addTodo() {
-      dispatch('add',{txt: text});
+    if (text) {
+      dispatch("add", { txt: text });
       text = "";
+    }
   }
 </script>
 
 <div>
-  <input placeholder="Yapılacak bir iş girin" type="text" on:keydown={(event) => {event.key === "Enter" ? addTodo() : null}} bind:value={text} />
+  <input
+    placeholder="Yapılacak bir iş girin"
+    type="text"
+    on:keydown={(event) => {
+      event.key === "Enter" ? addTodo() : null;
+    }}
+    bind:value={text}
+  />
   <button on:click={addTodo}>Add</button>
 </div>
 
@@ -35,12 +44,13 @@
     padding: 5px 10px;
     border-radius: 14px;
     cursor: pointer;
+    outline: none;
     margin-top: 10px;
     transition: 0.25s all;
   }
 
   button:hover {
-    background-color: rgba(215,215,215,1);
+    background-color: rgba(215, 215, 215, 1);
     /* font-size: 1.25em; */
     transform: scale(1.1);
   }
