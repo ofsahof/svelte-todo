@@ -12,6 +12,10 @@
       text = "";
     }
   }
+
+  function clearTodos() {
+    dispatch("clear")
+  }
 </script>
 
 <div>
@@ -23,7 +27,9 @@
     }}
     bind:value={text}
   />
+  <br>
   <button on:click={addTodo}>Add</button>
+  <button on:click={clearTodos}>Clear</button>
 </div>
 
 <style>
@@ -38,7 +44,7 @@
   }
 
   button {
-    display: block;
+    display: inline-block;
     width: 80px;
     height: 40px;
     padding: 5px 10px;
