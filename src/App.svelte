@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { TODO } from "./types";
   import TodoApp from "./lib/TodoList.svelte";
-  import CreateTodo from "./lib/CreateTodo.svelte";
+  import TodoButtons from "./lib/TodoButtons.svelte";
 
   let todoList: TODO[] = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -11,10 +11,13 @@
 </script>
 
 <main>
-  <CreateTodo
+  <TodoButtons
     on:add={(event) => {
       todoList.push({ text: event.detail.txt, isChecked: false });
       todoList = todoList;
+    }}
+    on:clear={(event) => {
+      todoList = [];
     }}
     bind:todos={todoList}
   />
