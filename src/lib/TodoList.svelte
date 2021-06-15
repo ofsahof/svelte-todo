@@ -21,6 +21,7 @@
 <style>
     ul {
         list-style:none;
+        margin-top: 7.5px;
     }
     .lined {
         text-decoration: line-through;
